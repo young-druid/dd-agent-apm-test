@@ -1,7 +1,7 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.4.0'
-    id 'org.jetbrains.kotlin.plugin.spring' version '1.4.0'
-    id 'org.springframework.boot' version '2.4.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.4.21'
+    id 'org.springframework.boot' version '2.4.1'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 }
 
@@ -22,7 +22,7 @@ dependencies {
             "org.springframework.boot:spring-boot-starter-webflux"
     )
 
-    dd_agent 'com.datadoghq:dd-java-agent:0.68.0'
+    dd_agent 'com.datadoghq:dd-java-agent:0.69.0'
 
 }
 
@@ -33,7 +33,7 @@ task copyDdAgent(type: Copy) {
 
 bootRun {
     main = 'com.AppKt'
-    jvmArgs += ["-javaagent:$buildDir/dd-agent/dd-java-agent-0.68.0.jar", "-Ddatadog.slf4j.simpleLogger.logFile=$buildDir/dd-agent/log.txt", '-Ddd.trace.debug=true']
+    jvmArgs += ["-javaagent:$buildDir/dd-agent/dd-java-agent-0.69.0.jar", "-Ddatadog.slf4j.simpleLogger.logFile=$buildDir/dd-agent/log.txt", '-Ddd.trace.debug=true']
 }
 
 bootRun.dependsOn copyDdAgent
